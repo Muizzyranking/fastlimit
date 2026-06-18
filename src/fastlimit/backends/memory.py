@@ -26,8 +26,10 @@ class MemoryBackend:
     """
     Sliding window rate limiter backed by in-process memory.
 
-    **Warning:** State is **not shared** across processes or workers. Use
-    `RedisBackend` for multi-worker deployments.
+    .. warning::
+        State is **not shared** across processes or workers. Use
+        :class:`~fastlimit.backends.redis.RedisBackend` for multi-worker
+        deployments.
 
     Args:
         key_prefix: Optional prefix for all keys. Useful when multiple

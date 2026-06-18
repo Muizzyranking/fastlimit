@@ -2,14 +2,15 @@
 Redis backend using Lua scripts for atomic rate limiting.
 
 Supports all three algorithms via dedicated Lua scripts.
-Requires the `redis` extra: `pip install fastlimit[redis]`.
+Requires the ``redis`` extra: ``pip install fastlimit[redis]``.
 
 Good for:
 - Multi-process / multi-worker deployments
 - Persistent limits across restarts
 - High-throughput production systems
 
-Example:
+Example::
+
     from fastlimit.backends.redis import RedisBackend
     from fastlimit import FastLimit
 
@@ -42,12 +43,13 @@ class RedisBackend:
     Redis-backed rate limiter using atomic Lua scripts.
 
     Args:
-        client: An async `redis.asyncio.Redis` client instance.
-        algorithm: Which algorithm to use. Defaults to `SLIDING_WINDOW`.
+        client: An async ``redis.asyncio.Redis`` client instance.
+        algorithm: Which algorithm to use. Defaults to
+            :attr:`~fastlimit.Algorithm.SLIDING_WINDOW`.
         key_prefix: Prefix for all Redis keys.
 
     Raises:
-        ImportError: If the `redis` package is not installed.
+        ImportError: If the ``redis`` package is not installed.
     """
 
     def __init__(
