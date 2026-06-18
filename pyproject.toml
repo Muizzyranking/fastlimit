@@ -1,7 +1,7 @@
 [project]
 name = "fastlimit"
 version = "0.1.0"
-description = "Production-grade rate limiting for FastAPI — dual IP/user buckets, pluggable backends, clean API."
+description = "Rate limiting for FastAPI with dual (IP/user) buckets."
 readme = "README.md"
 authors = [
     { name = "Muizzyranking", email = "oyebowaleabdulmuiz@gmail.com" }
@@ -54,7 +54,7 @@ dev = [
 
 [project.urls]
 Homepage = "https://github.com/muizzyranking/fastlimit"
-Documentation = "https://fastlimit.muizzyranking.me"
+Documentation = "https://muizzyranking.github.io/fastlimit"
 Repository = "https://github.com/muizzyranking/fastlimit"
 Issues = "https://github.com/muizzyranking/fastlimit/issues"
 
