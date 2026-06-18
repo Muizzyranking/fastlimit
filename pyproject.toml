@@ -7,7 +7,7 @@ authors = [
     { name = "Muizzyranking", email = "oyebowaleabdulmuiz@gmail.com" }
 ]
 license = { text = "MIT" }
-requires-python = ">=3.13"
+requires-python = ">=3.11"
 keywords = ["fastapi", "rate-limit", "redis", "middleware", "async"]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -38,6 +38,7 @@ build-backend = "uv_build"
 dev = [
     "fakeredis>=2.36.1",
     "httpx>=0.28.1",
+    "lupa>=2.8",
     "mypy>=2.1.0",
     "pytest>=9.1.0",
     "pytest-asyncio>=1.4.0",
