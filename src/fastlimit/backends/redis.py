@@ -20,7 +20,7 @@ Example::
 import os
 import time
 from pathlib import Path
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING
 
 from fastlimit.algorithms import Algorithm
 from fastlimit.backends import BackendResult
@@ -69,7 +69,7 @@ class RedisBackend:
         self._client = client
         self._algorithm = algorithm
         self._prefix = key_prefix
-        self._scripts: dict[Algorithm, Any] = {}
+        self._scripts: dict[Algorithm, str] = {}
 
     def _get_lua(self, algorithm: Algorithm) -> str:
         if algorithm not in self._scripts:
@@ -87,6 +87,7 @@ class RedisBackend:
         window_ms = bucket.window_sec * 1000
         lua = self._get_lua(self._algorithm)
 
+        argv: list[int | str]
         if self._algorithm == Algorithm.SLIDING_WINDOW:
             argv = [now_ms, window_ms, bucket.limit, cost, os.urandom(8).hex()]
         elif self._algorithm == Algorithm.FIXED_WINDOW:

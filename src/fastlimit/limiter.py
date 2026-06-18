@@ -1,6 +1,6 @@
 import logging
-from collections.abc import Callable
-from typing import Any
+from collections.abc import Awaitable, Callable
+from typing import cast
 
 from fastapi import FastAPI, Request, Response
 from fastapi.responses import JSONResponse
@@ -15,6 +15,8 @@ from fastlimit.rules import RateLimitRule
 logger = logging.getLogger("fastlimit")
 
 _STATE_KEY = "fastlimit"
+
+ErrorHandler = Callable[[Request, RateLimitExceeded], Awaitable[Response]]
 
 
 class FastLimit:
@@ -85,7 +87,7 @@ class FastLimit:
         key_prefix: str = "fastlimit",
         exempt_ips: set[str] | None = None,
         dry_run: bool = False,
-        error_handler: Callable[..., Any] | None = None,
+        error_handler: ErrorHandler | None = None,
         trusted_proxies: int = 1,
     ) -> None:
         self._algorithm = algorithm
@@ -264,4 +266,4 @@ def get_limiter(request: Request) -> FastLimit:
     limiter = getattr(request.app.state, _STATE_KEY, None)
     if limiter is None:
         raise FastLimitNotInitialized()
-    return limiter
+    return cast(FastLimit, limiter)
