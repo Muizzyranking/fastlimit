@@ -1,6 +1,6 @@
 # fastlimit
 
-**Production-grade rate limiting for FastAPI.**
+**Rate limiting for FastAPI.**
 
 Separate IP and user buckets per endpoint. Pluggable backends. No forced `Request` in your function signature.
 
