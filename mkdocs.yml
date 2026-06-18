@@ -3,18 +3,19 @@ site_description: Rate limiting for FastAPI with dual IP/user buckets.
 site_url: https://muizzyranking.github.io/fastlimit
 repo_url: https://github.com/muizzyranking/fastlimit
 repo_name: muizzyranking/fastlimit
-edit_uri: edit/main/docs/
 
 theme:
   name: material
   palette:
-    - scheme: default
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
       primary: indigo
       accent: indigo
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
-    - scheme: slate
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
       primary: indigo
       accent: indigo
       toggle:
@@ -23,19 +24,28 @@ theme:
   font:
     text: Inter
     code: JetBrains Mono
+  icon:
+    repo: fontawesome/brands/github
   features:
     - navigation.tabs
     - navigation.sections
     - navigation.top
     - navigation.footer
+    - navigation.indexes
     - search.highlight
     - search.suggest
+    - search.share
     - content.code.copy
     - content.code.annotate
+    - content.action.edit
+    - content.action.view
     - toc.follow
+    - toc.integrate
 
 plugins:
   - search
+  - minify:
+      minify_html: true
   - mkdocstrings:
       handlers:
         python:
@@ -46,8 +56,12 @@ plugins:
             show_symbol_type_heading: true
             show_symbol_type_toc: true
             docstring_style: google
-            merge_init_into_class: true
+            merge_init_into_class: false
             show_signature_annotations: true
+            separate_signature: true
+            signature_crossrefs: true
+          inventories:
+            - https://docs.python.org/3/objects.inv
 
 markdown_extensions:
   - admonition
@@ -59,31 +73,36 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
+  - pymdownx.keys
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.details
   - attr_list
   - md_in_html
   - toc:
       permalink: true
+      permalink_title: Anchor link to this section
 
 nav:
   - Home: index.md
   - Guide:
-    - Quickstart: guide/quickstart.md
-    - Rules & Rate Strings: guide/rules.md
-    - Backends: guide/backends.md
-    - Algorithms: guide/algorithms.md
-    - Headers: guide/headers.md
-    - Advanced: guide/advanced.md
+      - Quickstart: guide/quickstart.md
+      - Rules & Rate Strings: guide/rules.md
+      - Backends: guide/backends.md
+      - Algorithms: guide/algorithms.md
+      - Headers: guide/headers.md
+      - Advanced: guide/advanced.md
   - Examples:
-    - Full App: guide/example.md
+      - Full App: guide/example.md
   - API Reference:
-    - FastLimit: api/fastlimit.md
-    - rate_limit & limit: api/rate_limit.md
-    - rule & Rules: api/rules.md
-    - Backends: api/backends.md
-    - Exceptions: api/exceptions.md
+      - FastLimit: api/fastlimit.md
+      - rate_limit & limit: api/rate_limit.md
+      - rule & Rules: api/rules.md
+      - Backends: api/backends.md
+      - Exceptions: api/exceptions.md
   - Blog:
-    - Why fastlimit: blog/motivation.md
+      - Why fastlimit: blog/motivation.md
 
 extra:
   social:
@@ -92,6 +111,10 @@ extra:
     - icon: fontawesome/brands/python
       link: https://pypi.org/project/fastlimit
     - icon: fontawesome/brands/x-twitter
-      link: https://pypi.org/project/fastlimit
+      link: https://x.com/muizzyranking
     - icon: fontawesome/brands/linkedin
-      link: https://pypi.org/project/fastlimit
+      link: https://linkedin.com/in/muizzyrankin
+  generator: false
+
+extra_css:
+  - stylesheets/extra.css

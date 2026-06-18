@@ -1,0 +1,23 @@
+.md-typeset h1 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.md-typeset code {
+  font-variant-ligatures: none;
+}
+
+/* Custom admonition colors */
+.md-typeset .admonition.fastlimit,
+.md-typeset details.fastlimit {
+  border-color: #6366f1;
+}
+.md-typeset .fastlimit > .admonition-title,
+.md-typeset .fastlimit > summary {
+  background-color: rgba(99, 102, 241, 0.1);
+}
+.md-typeset .fastlimit > .admonition-title::before,
+.md-typeset .fastlimit > summary::before {
+  color: #6366f1;
+  content: "⚡";
+}
