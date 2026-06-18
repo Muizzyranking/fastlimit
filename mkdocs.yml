@@ -1,0 +1,97 @@
+site_name: fastlimit
+site_description: Rate limiting for FastAPI with dual IP/user buckets.
+site_url: https://muizzyranking.github.io/fastlimit
+repo_url: https://github.com/muizzyranking/fastlimit
+repo_name: muizzyranking/fastlimit
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - content.code.annotate
+    - toc.follow
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+          options:
+            show_source: false
+            show_root_heading: true
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+            docstring_style: google
+            merge_init_into_class: true
+            show_signature_annotations: true
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Guide:
+    - Quickstart: guide/quickstart.md
+    - Rules & Rate Strings: guide/rules.md
+    - Backends: guide/backends.md
+    - Algorithms: guide/algorithms.md
+    - Headers: guide/headers.md
+    - Advanced: guide/advanced.md
+  - Examples:
+    - Full App: guide/example.md
+  - API Reference:
+    - FastLimit: api/fastlimit.md
+    - rate_limit & limit: api/rate_limit.md
+    - rule & Rules: api/rules.md
+    - Backends: api/backends.md
+    - Exceptions: api/exceptions.md
+  - Blog:
+    - Why fastlimit: blog/motivation.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/muizzyranking/fastlimit
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/fastlimit
+    - icon: fontawesome/brands/x-twitter
+      link: https://pypi.org/project/fastlimit
+    - icon: fontawesome/brands/linkedin
+      link: https://pypi.org/project/fastlimit
