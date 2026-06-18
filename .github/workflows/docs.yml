@@ -24,7 +24,7 @@ jobs:
         with:
           python-version: '3.12'
 
-      - run: pip install  mkdocs mkdocs-material "mkdocstrings[python]" mkdocs-autorefs
+      - run: pip install  mkdocs mkdocs-material "mkdocstrings[python]" mkdocs-autorefs mkdocs-minify-plugin
 
       - run: mkdocs build
 
